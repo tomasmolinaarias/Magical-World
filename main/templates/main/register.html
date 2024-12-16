@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical World - Registro</title>
+    <!-- Estilo personalizado -->
+    <link rel="stylesheet" href="{% static 'main/register.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="glow-title">Registro</h1>
+        <p class="subtitle">Responde la encuesta y descubre tu casa en Hogwarts</p>
+        <form method="post" class="magic-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="magic-button">Registrarme</button>
+        </form>
+        <a href="{% url 'home' %}" class="back-link">Volver al Inicio</a>
+    </div>
+</body>
+</html>

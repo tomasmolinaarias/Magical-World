@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="{% static 'main/dashboard.css' %}">
+</head>
+<body>
+    <div class="container center-align">
+        <h1 class="glow-title">¡Bienvenido, {{ user.username }}!</h1>
+        <p class="subtitle">{{ reference }}</p>
+
+        <!-- Botones mágicos -->
+        <div class="buttons">
+            <a href="{% url 'characters' %}" class="waves-effect waves-light btn-large orange darken-2">
+                <i class="material-icons left">group</i> Ver Personajes
+            </a>
+            <a href="{% url 'spells' %}" class="waves-effect waves-light btn-large purple lighten-1">
+                <i class="material-icons left">auto_fix_high</i> Ver Hechizos
+            </a>
+            <a href="{% url 'staff' %}" class="waves-effect waves-light btn-large teal lighten-1">
+                <i class="material-icons left">school</i> Ver Profesores
+            </a>
+        </div>
+
+        <!-- Cerrar sesión -->
+        <a href="{% url 'logout' %}" class="logout-link">Cerrar Sesión</a>
+    </div>
+
+    <footer>
+        <p>Creado con magia por Victor Molina y Sebastian Lara</p>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

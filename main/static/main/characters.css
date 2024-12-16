@@ -1,0 +1,114 @@
+/* General */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #1e1e2e, #311b92);
+    font-family: 'Cinzel', serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenedor Principal */
+.container {
+    flex: 1;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Título */
+.glow-title {
+    font-size: 3em;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00;
+    margin-bottom: 20px;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ffcc00;
+    }
+    to {
+        text-shadow: 0 0 20px #ffaa00;
+    }
+}
+
+/* Grid de Personajes */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Tarjetas */
+.character-card {
+    background: #2c2c3b;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+    height: 400px;
+}
+
+.character-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffaa00;
+}
+
+/* Imagen */
+.image-container {
+    width: 100%;
+    height: 60%; /* Imagen ocupa 60% de la tarjeta */
+    background-color: #3b3b5b;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenido de la Tarjeta */
+.card-content {
+    padding: 10px;
+    height: 40%; /* Contenido ocupa 40% de la tarjeta */
+}
+
+.character-name {
+    font-size: 1.3em;
+    color: #ffcc00;
+    margin-bottom: 5px;
+}
+
+.character-info, .character-status {
+    color: #d3d3d3;
+    font-size: 1em;
+}
+
+/* Botón Volver */
+.back-link {
+    background: #ffcc00;
+    color: #1e1e2e;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    background: #ffaa00;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: #1e1e2e;
+    color: #ffcc00;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}

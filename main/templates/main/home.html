@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical World - Home</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'main/home.css' %}">
+    <!-- Iconos de Materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="deep-purple darken-3">
+    <!-- Contenedor principal -->
+    <div class="container center-align">
+        <!-- Título -->
+        <h1 class="yellow-text text-accent-2 glow-text">Bienvenido al Mundo Mágico</h1>
+        <p class="white-text flow-text">
+            Explora el mundo de Harry Potter y descubre a qué casa perteneces.
+        </p>
+
+        <!-- Botones -->
+        <div class="buttons">
+            <a href="{% url 'register' %}" class="waves-effect waves-light btn amber darken-1">
+                <i class="material-icons left">person_add</i> Regístrate
+            </a>
+            <a href="{% url 'login' %}" class="waves-effect waves-light btn blue lighten-1 login-btn">
+                <i class="material-icons left">login</i> Iniciar Sesión
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer deep-purple lighten-2">
+        <div class="container center-align">
+            <p class="white-text">Creado por <strong>Victor Molina</strong> y <strong>Sebastian Lara</strong></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript de Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

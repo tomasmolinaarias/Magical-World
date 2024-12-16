@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Casa de Hogwarts</title>
+    <link rel="stylesheet" href="{% static 'main/register.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="glow-title">¡Felicidades!</h1>
+        <p class="subtitle">Tu casa es:</p>
+        <h2 style="color: #ffcc00; text-shadow: 0 0 10px #ffcc00;">{{ house }}</h2>
+        <a href="{% url 'home' %}" class="magic-button">Volver al Inicio</a>
+    </div>
+</body>
+</html>

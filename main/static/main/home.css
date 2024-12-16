@@ -1,0 +1,180 @@
+/* Estilo general del cuerpo */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que ocupen toda la altura */
+    display: flex;
+    flex-direction: column; /* Estructura vertical */
+    background-color: #1e1e2e; /* Fondo oscuro mágico */
+    font-family: 'Cinzel', serif; /* Fuente estilo mágico */
+    color: white;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1; /* Ocupa todo el espacio restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Título principal */
+h1 {
+    font-size: 4em;
+    color: #f7e62d;
+    text-shadow: 
+        0 0 10px #f7e62d, 
+        0 0 20px #f7e62d, 
+        0 0 30px #f7b32b,
+        0 0 40px #f79c23,
+        0 0 50px #ff8800,
+        0 0 75px #ff7700;
+    animation: glow 1.5s infinite alternate, fadeIn 2s ease-out;
+}
+
+/* Animación del texto brillante */
+@keyframes glow {
+    from {
+        text-shadow: 
+            0 0 10px #f7e62d, 
+            0 0 20px #f7e62d, 
+            0 0 30px #f7b32b;
+    }
+    to {
+        text-shadow: 
+            0 0 20px #ff8800, 
+            0 0 30px #ff7700, 
+            0 0 40px #ff6600;
+    }
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Párrafo */
+p {
+    font-size: 1.5em;
+    color: #d3d3d3;
+    text-shadow: 0 0 5px #555;
+}
+
+/* Botones mágicos */
+.buttons a {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    padding: 5px 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ffcc00, #ff8800);
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #ff8800;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    z-index: 1;
+    white-space: nowrap;
+    animation: float 3s ease-in-out infinite; /* Movimiento flotante */
+}
+
+/* Efecto de brillo al pasar el mouse */
+.buttons a:hover {
+    color: #1e1e2e;
+    background: linear-gradient(45deg, #ff8800, #ffcc00);
+    box-shadow: 0 0 20px #ffcc00, 0 0 30px #ff8800;
+    transform: scale(1.05);
+}
+
+.buttons a:active {
+    box-shadow: 0 0 30px #ffcc00, 0 0 40px #ff8800;
+    transform: scale(1.1);
+}
+
+/* Botón especial de Iniciar Sesión */
+.buttons a.login-btn {
+    background: linear-gradient(45deg, #00bcd4, #2196f3);
+    box-shadow: 0 0 10px #00bcd4, 0 0 20px #2196f3;
+}
+
+.buttons a.login-btn:hover {
+    background: linear-gradient(45deg, #2196f3, #00bcd4);
+    box-shadow: 0 0 20px #00bcd4, 0 0 30px #2196f3;
+    color: #1e1e2e;
+    transform: scale(1.05);
+}
+
+/* Movimiento flotante */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Efecto de partículas flotantes */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 20%);
+    background-size: 10px 10px;
+    animation: moveParticles 10s infinite linear;
+    z-index: -1;
+}
+
+@keyframes moveParticles {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100px 100px;
+    }
+}
+
+/* Footer mágico */
+footer {
+    background-color: #673ab7;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.2em;
+    margin-top: auto;
+    box-shadow: 0 -5px 15px rgba(255, 255, 255, 0.3); /* Resplandor superior */
+    animation: floatFooter 4s ease-in-out infinite, fadeIn 2s ease-out; /* Movimiento flotante y aparición */
+}
+
+/* Animación flotante del footer */
+@keyframes floatFooter {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+    letter-spacing: 1px;
+}

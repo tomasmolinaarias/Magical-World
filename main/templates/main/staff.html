@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Profesores</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="{% static 'main/staff.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="glow-title">Profesores de Hogwarts</h1>
+
+        <!-- Toggle Switch -->
+        <div class="switch center-align">
+            <label class="toggle-label">
+                <span class="toggle-text">Muertos</span>
+                <input type="checkbox" id="toggle-alive" {% if alive == "true" %}checked{% endif %}>
+                <span class="lever"></span>
+                <span class="toggle-text">Vivos</span>
+            </label>
+        </div>
+
+        <!-- Grid de Profesores -->
+        <div class="row staff-grid" id="staff-container">
+            {% for staff in staff_members %}
+            <div class="col s12 m6 l4 staff-card" data-alive="{{ staff.alive }}">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        {% if staff.image %}
+                            <img src="{{ staff.image }}" alt="{{ staff.name }}">
+                        {% else %}
+                            <img src="{% static 'main/default.png' %}" alt="Imagen no disponible">
+                        {% endif %}
+                    </div>
+                    <div class="card-content center-align">
+                        <h5 class="staff-name">{{ staff.name }}</h5>
+                        <p><strong>Especie:</strong> {{ staff.species }}</p>
+                        <p>
+                            <strong>Estado:</strong>
+                            {% if staff.alive %}
+                                <span class="green-text text-darken-2">Vivo</span>
+                            {% else %}
+                                <span class="red-text text-darken-2">Muerto</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="no-data">No hay profesores disponibles.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Volver al Dashboard -->
+        <div class="center-align">
+            <a href="{% url 'dashboard' %}" class="waves-effect waves-light btn-large back-link">
+                <i class="material-icons left">arrow_back</i>Volver
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Creado por Victor Molina y Sebastian Lara</p>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.getElementById('toggle-alive').addEventListener('change', function () {
+            const aliveStatus = this.checked ? 'true' : 'false';
+            window.location.href = `?alive=${aliveStatus}`;
+        });
+    </script>
+</body>
+</html>

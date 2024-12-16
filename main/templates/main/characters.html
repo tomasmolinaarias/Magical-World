@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="{% static 'main/characters.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="glow-title">Personajes de {{ house }}</h1>
+
+        <!-- Toggle Switch -->
+        <div class="switch center-align">
+            <label class="toggle-label">
+                <span class="toggle-text">Muertos</span>
+                <input type="checkbox" id="toggle-alive" {% if alive == "true" %}checked{% endif %}>
+                <span class="lever"></span>
+                <span class="toggle-text">Vivos</span>
+            </label>
+        </div>
+
+        <!-- Grid de Personajes -->
+        <div class="characters-grid" id="characters-container">
+            {% for char in characters %}
+            <div class="character-card" data-alive="{{ char.alive }}">
+                <div class="image-container">
+                    {% if char.image %}
+                        <img src="{{ char.image }}" alt="{{ char.name }}">
+                    {% else %}
+                        <img src="{% static 'main/default.png' %}" alt="Imagen no disponible">
+                    {% endif %}
+                </div>
+                <div class="card-content">
+                    <h5 class="character-name">{{ char.name }}</h5>
+                    <p class="character-info"><strong>Especie:</strong> {{ char.species }}</p>
+                    <p class="character-status">
+                        <strong>Estado:</strong>
+                        {% if char.alive %}
+                            <span class="green-text">Vivo</span>
+                        {% else %}
+                            <span class="red-text">Muerto</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            {% empty %}
+            <p class="no-data">No hay personajes disponibles.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Botón Volver -->
+        <div class="center-align">
+            <a href="{% url 'dashboard' %}" class="btn back-link">Volver</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Creado con magia por Victor Molina y Sebastian Lara</p>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.getElementById('toggle-alive').addEventListener('change', function () {
+            const aliveStatus = this.checked;
+            const cards = document.querySelectorAll('.character-card');
+            cards.forEach(card => {
+                const isAlive = card.dataset.alive === "True";
+                card.style.display = (aliveStatus && isAlive) || (!aliveStatus && !isAlive) ? 'block' : 'none';
+            });
+        });
+        document.getElementById('toggle-alive').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

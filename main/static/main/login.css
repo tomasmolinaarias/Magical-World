@@ -1,0 +1,111 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #311b92, #1e1e2e);
+    font-family: 'Cinzel', serif;
+    color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Contenedor de Login */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Título brillante */
+.glow-title {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 30px #ff8800;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00;
+    }
+    to {
+        text-shadow: 0 0 20px #ff8800, 0 0 30px #ff5500;
+    }
+}
+
+/* Tarjeta de Login */
+.login-card {
+    background-color: rgba(69, 39, 160, 0.9); /* Morado oscuro con transparencia */
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.5), 0 0 25px rgba(255, 136, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Campos de Entrada */
+.magic-form .input-field input {
+    color: white;
+}
+
+.magic-form .input-field input:focus + label {
+    color: #ffcc00 !important;
+}
+
+.magic-form .input-field input:focus {
+    border-bottom: 1px solid #ffcc00 !important;
+    box-shadow: 0 1px 0 0 #ffcc00 !important;
+}
+
+/* Botón mágico */
+.magic-button {
+    background: linear-gradient(45deg, #ffcc00, #ff8800);
+    color: #1e1e2e;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffaa00;
+    transition: all 0.3s ease-in-out;
+}
+
+.magic-button:hover {
+    background: linear-gradient(45deg, #ffaa00, #ff5500);
+    box-shadow: 0 0 30px #ffcc00, 0 0 50px #ffaa00;
+    transform: scale(1.05);
+}
+
+/* Enlace de regreso */
+.back-link {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 1em;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+    color: #ffaa00;
+    transform: scale(1.05);
+}

@@ -1,0 +1,160 @@
+/* Fondo del cuerpo (mismo que home.css) */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e2e; /* Fondo oscuro mágico */
+    font-family: 'Cinzel', serif; /* Fuente mágica */
+    color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efecto de partículas flotantes */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 20%);
+    background-size: 10px 10px;
+    animation: moveParticles 10s infinite linear;
+    z-index: -1;
+}
+
+@keyframes moveParticles {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100px 100px;
+    }
+}
+
+/* Contenedor principal */
+.container {
+    text-align: center;
+    background: #673ab7; /* Fondo translúcido oscuro */
+    border-radius: 15px;
+    padding: 30px;
+    width: 400px;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.4), 0 0 40px rgba(255, 136, 0, 0.3);
+    backdrop-filter: blur(6px);
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título brillante */
+.glow-title {
+    font-size: 2.5em;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 30px #ff8800;
+    animation: glowTitle 1.5s infinite alternate;
+    margin-bottom: 15px;
+}
+
+@keyframes glowTitle {
+    from {
+        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00;
+    }
+    to {
+        text-shadow: 0 0 20px #ff8800, 0 0 30px #ff5500;
+    }
+}
+
+/* Subtítulo */
+.subtitle {
+    font-size: 1.2em;
+    color: #d3d3d3;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.magic-form label {
+    display: block;
+    font-size: 1.1em;
+    color: #f7e62d;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+/* Campos de entrada */
+.magic-form input[type="text"],
+.magic-form input[type="email"],
+.magic-form input[type="password"],
+
+.magic-form select {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.magic-form input:focus {
+    outline: none;
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 30px #ff8800;
+}
+
+/* Botón mágico */
+.magic-button {
+    display: inline-block;
+    margin-top: 15px;
+    background: linear-gradient(45deg, #ffcc00, #ff8800);
+    color: #1e1e2e;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffaa00;
+    transition: all 0.3s ease-in-out;
+}
+
+.magic-button:hover {
+    box-shadow: 0 0 30px #ffcc00, 0 0 50px #ffaa00;
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #ffaa00, #ff5500);
+}
+
+/* Enlace de regreso */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 1em;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+    color: #ffaa00;
+    transform: scale(1.05);
+}
