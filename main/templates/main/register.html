@@ -3,21 +3,128 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magical World - Registro</title>
-    <!-- Estilo personalizado -->
+    <title>Registro</title>
     <link rel="stylesheet" href="{% static 'main/register.css' %}">
 </head>
 <body>
     <div class="container">
         <h1 class="glow-title">Registro</h1>
         <p class="subtitle">Responde la encuesta y descubre tu casa en Hogwarts</p>
-        <form method="post" class="magic-form">
+        <form method="post" class="magic-form" id="register-form">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="magic-button">Registrarme</button>
+            <!-- Nombre de usuario -->
+            <div>
+                <label for="username">Nombre de usuario</label>
+                <input type="text" id="username" name="username" required>
+                <span id="username-error" class="helper-text red-text"></span>
+            </div>
+            <!-- Correo electrónico -->
+            <div>
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+                <span id="email-error" class="helper-text red-text"></span>
+            </div>
+            <!-- Contraseña -->
+            <div>
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+                <span id="password-error" class="helper-text red-text"></span>
+            </div>
+            <!-- Pregunta de la casa -->
+            <div>
+                <label>¿Qué cualidad valoras más?</label>
+                {{ form.house_question }}
+            </div>
+            <!-- Botón Registrarme -->
+            <button type="submit" id="register-button" class="magic-button" disabled>Registrarme</button>
         </form>
+        
         <a href="{% url 'home' %}" class="back-link">Volver al Inicio</a>
     </div>
+
+    <script>
+        const usernameField = document.getElementById('username');
+        const passwordField = document.getElementById('password');
+        const usernameError = document.getElementById('username-error');
+        const passwordError = document.getElementById('password-error');
+        const registerButton = document.getElementById('register-button');
+        const emailField = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+
+        function validateUsername() {
+            fetch("{% url 'validate_username' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `username=${usernameField.value}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    usernameError.textContent = data.error;
+                    registerButton.disabled = true;
+                } else {
+                    usernameError.textContent = '';
+                    checkForm();
+                }
+            });
+        }
+
+        function validatePassword() {
+            fetch("{% url 'validate_password' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `password=${passwordField.value}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    passwordError.textContent = data.error;
+                    registerButton.disabled = true;
+                } else {
+                    passwordError.textContent = '';
+                    checkForm();
+                }
+            });
+        }
+
+    function validateEmail() {
+        fetch("{% url 'validate_email' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `email=${emailField.value}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                emailError.textContent = data.error;
+                registerButton.disabled = true;
+            } else {
+                emailError.textContent = '';
+                checkForm();
+            }
+        });
+    }
+
+    emailField.addEventListener('input', validateEmail);
+        function checkForm() {
+            if (!usernameError.textContent && !passwordError.textContent && usernameField.value && passwordField.value) {
+                registerButton.disabled = false;
+            } else {
+                registerButton.disabled = true;
+            }
+        }
+
+        usernameField.addEventListener('input', validateUsername);
+        passwordField.addEventListener('input', validatePassword);
+    </script>
 </body>
 </html>

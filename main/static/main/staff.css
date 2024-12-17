@@ -1,44 +1,29 @@
-/* Fondo */
+/* General */
 body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom, #1e1e2e, #311b92);
     font-family: 'Cinzel', serif;
     color: white;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Efecto de partículas */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 10%, transparent 20%);
-    background-size: 20px 20px;
-    animation: particles 15s infinite linear;
-    z-index: -1;
+/* Contenedor Principal */
+.container {
+    flex: 1;
+    margin-top: 30px;
+    text-align: center;
 }
 
-@keyframes particles {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 100px 100px;
-    }
-}
-
-/* Título brillante */
+/* Título */
 .glow-title {
-    font-size: 3.5em;
+    font-size: 3em;
     color: #ffcc00;
-    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 30px #ff8800;
-    animation: glow 1.5s infinite alternate;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00;
     margin-bottom: 20px;
+    animation: glow 1.5s infinite alternate;
 }
 
 @keyframes glow {
@@ -50,87 +35,80 @@ body::before {
     }
 }
 
+/* Grid de Personajes */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
 /* Tarjetas */
-.staff-card {
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-    background: linear-gradient(to top, #2c2c3b, #1e1e2e);
-    transition: transform 0.3s, box-shadow 0.3s;
+.character-card {
+    background: #2c2c3b;
+    border-radius: 10px;
     overflow: hidden;
-}
-
-.staff-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #ffcc00, 0 0 35px #ffaa00;
-}
-
-.card-image img {
-    height: 250px;
-    object-fit: cover;
-    filter: brightness(0.9);
-    transition: transform 0.3s ease-in-out;
-}
-
-.card-image img:hover {
-    transform: scale(1.1);
-    filter: brightness(1);
-}
-
-.staff-name {
-    font-size: 1.8em;
-    color: #ffcc00;
-    text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffaa00;
-    margin-bottom: 10px;
-}
-
-/* Estado */
-.card-content {
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     text-align: center;
+    height: 400px;
 }
 
-.card-content p {
-    margin: 5px 0;
+.character-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffaa00;
+}
+
+/* Imagen */
+.image-container {
+    width: 100%;
+    height: 60%; /* Imagen ocupa 60% de la tarjeta */
+    background-color: #3b3b5b;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenido de la Tarjeta */
+.card-content {
+    padding: 10px;
+    height: 40%; /* Contenido ocupa 40% de la tarjeta */
+}
+
+.character-name {
+    font-size: 1.3em;
+    color: #ffcc00;
+    margin-bottom: 5px;
+}
+
+.character-info, .character-status {
     color: #d3d3d3;
-    font-size: 1.1em;
-}
-
-.card-content span {
-    font-weight: bold;
-}
-
-.green-text {
-    color: #4caf50;
-}
-
-.red-text {
-    color: #e53935;
+    font-size: 1em;
 }
 
 /* Botón Volver */
 .back-link {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
+    background: #ffcc00;
     color: #1e1e2e;
-    background: linear-gradient(45deg, #ffcc00, #ff8800);
     font-weight: bold;
-    border-radius: 10px;
-    text-transform: uppercase;
-    box-shadow: 0 0 10px #ffcc00;
-    transition: all 0.3s ease-in-out;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .back-link:hover {
+    background: #ffaa00;
     transform: scale(1.1);
-    box-shadow: 0 0 20px #ffcc00, 0 0 30px #ffaa00;
-    color: #311b92;
 }
 
 /* Footer */
 footer {
+    background-color: #1e1e2e;
+    color: #ffcc00;
     text-align: center;
     padding: 10px 0;
-    color: #ffcc00;
-    font-weight: bold;
-    font-size: 1em;
+    margin-top: auto;
 }

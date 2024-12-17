@@ -4,13 +4,11 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def characters(request):
-    # Obtiene la casa desde el perfil del usuario autenticado
-    user_profile = request.user.profile  # Asume que Profile está relacionado con User
-    house = user_profile.house  # La casa del usuario actual
+    user_profile = request.user.profile 
+    house = user_profile.house  
 
-    alive = request.GET.get('alive')  # Obtiene el estado del toggle (vivo/muerto)
+    alive = request.GET.get('alive')  
 
-    # URL de la API dinámica según la casa del usuario
     api_url = f"https://hp-api.onrender.com/api/characters/house/{house.lower()}"
 
     response = requests.get(api_url)
@@ -28,7 +26,7 @@ def characters(request):
 
     context = {
         'characters': characters,
-        'house': house,  # La casa del usuario actual
-        'alive': alive,  # Estado del filtro
+        'house': house,  
+        'alive': alive,  
     }
     return render(request, 'main/characters.html', context)

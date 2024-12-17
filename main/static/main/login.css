@@ -109,3 +109,21 @@ body {
     color: #ffaa00;
     transform: scale(1.05);
 }
+/* Mensajes de error y éxito */
+.messages .card-panel {
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.messages .red {
+    background-color: #e53935 !important;
+    text-shadow: 0 0 10px #ffcccb;
+}
+
+.messages .green {
+    background-color: #43a047 !important;
+    text-shadow: 0 0 10px #c8e6c9;
+}
